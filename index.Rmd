@@ -48,7 +48,8 @@ sd |>
   plot_ly() %>%
   group_by(programa) %>%
   add_histogram(x = ~qualidade_aulas,
-                color = ~qualidade_aulas) |> 
+                color = ~qualidade_aulas,
+                colors = "Accent") |> 
   hide_legend() |> 
   config(displayModeBar = FALSE)
 
@@ -68,7 +69,8 @@ sd |>
   plot_ly() %>%
   group_by(programa) %>%
   add_histogram(x = ~qualidade_material,
-                color = ~qualidade_material) |> 
+                color = ~qualidade_material,
+                colors = "Accent") |> 
   hide_legend() |> 
   config(displayModeBar = FALSE)
 
@@ -83,7 +85,8 @@ sd |>
   plot_ly() %>%
   group_by(programa) %>%
   add_histogram(x = ~qualidade_acervo,
-                color = ~qualidade_acervo) |> 
+                color = ~qualidade_acervo,
+                colors = "Accent") |> 
   hide_legend() |> 
   config(displayModeBar = FALSE)
 
@@ -103,7 +106,8 @@ sd |>
   plot_ly() %>%
   group_by(programa) %>%
   add_histogram(x = ~infra_geral,
-                color = ~infra_geral) |> 
+                color = ~infra_geral,
+                colors = "Accent") |> 
   hide_legend() |> 
   config(displayModeBar = FALSE)
 
@@ -118,10 +122,11 @@ sd |>
   plot_ly() %>%
   group_by(programa) %>%
   add_histogram(x = ~infra_labs,
-                color = ~infra_labs) |> 
+                color = ~infra_labs,
+                colors = "Accent") |> 
   hide_legend() |> 
   config(displayModeBar = FALSE)
-
+ 
 
 ```
 
@@ -133,7 +138,8 @@ sd |>
   plot_ly() %>%
   group_by(programa) %>%
   add_histogram(x = ~infra_insumos,
-                color = ~infra_insumos) |> 
+                color = ~infra_insumos,
+                colors = "Accent") |> 
   hide_legend() |> 
   config(displayModeBar = FALSE)
 

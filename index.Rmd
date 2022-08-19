@@ -1,0 +1,141 @@
+---
+title: "Autoavaliação discentes"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    theme: cosmo
+---
+
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(gsheet)
+library(crosstalk)
+
+```
+
+
+```{r include=FALSE}
+dat <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1643aQwah2_jiNI3B5h0If35QjmnBYV3U62tcZpyXkW8/edit#gid=244532207")
+
+sd <- SharedData$new(dat)
+
+
+```
+
+
+
+Inputs {.sidebar}
+-------------------------------------
+
+
+```{r}
+filter_select("programa", "Programa", sd, ~programa, multiple = FALSE)
+
+```
+
+
+Column {data-width=450}
+-----------------------------------------------------------------------
+
+### Qualidade das aulas
+
+```{r}
+library(plotly)
+sd |> 
+  plot_ly() %>%
+  group_by(programa) %>%
+  add_histogram(x = ~qualidade_aulas,
+                color = ~qualidade_aulas) |> 
+  hide_legend() |> 
+  config(displayModeBar = FALSE)
+
+```
+
+### Qualidade do material
+
+```{r}
+
+library(plotly)
+
+
+
+
+
+sd |> 
+  plot_ly() %>%
+  group_by(programa) %>%
+  add_histogram(x = ~qualidade_material,
+                color = ~qualidade_material) |> 
+  hide_legend() |> 
+  config(displayModeBar = FALSE)
+
+```
+
+
+### Qualidade do acervo
+
+```{r}
+library(plotly)
+sd |> 
+  plot_ly() %>%
+  group_by(programa) %>%
+  add_histogram(x = ~qualidade_acervo,
+                color = ~qualidade_acervo) |> 
+  hide_legend() |> 
+  config(displayModeBar = FALSE)
+
+
+```
+
+
+Column {data-width=450}
+-----------------------------------------------------------------------
+
+
+### Infraestrutura geral
+
+```{r}
+library(plotly)
+sd |> 
+  plot_ly() %>%
+  group_by(programa) %>%
+  add_histogram(x = ~infra_geral,
+                color = ~infra_geral) |> 
+  hide_legend() |> 
+  config(displayModeBar = FALSE)
+
+
+```
+
+### Infraestrutura de laboratórios
+
+```{r}
+library(plotly)
+sd |> 
+  plot_ly() %>%
+  group_by(programa) %>%
+  add_histogram(x = ~infra_labs,
+                color = ~infra_labs) |> 
+  hide_legend() |> 
+  config(displayModeBar = FALSE)
+
+
+```
+
+### Infraestrutura de insumos
+
+```{r}
+library(plotly)
+sd |> 
+  plot_ly() %>%
+  group_by(programa) %>%
+  add_histogram(x = ~infra_insumos,
+                color = ~infra_insumos) |> 
+  hide_legend() |> 
+  config(displayModeBar = FALSE)
+
+
+```
